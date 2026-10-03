@@ -1,0 +1,9 @@
+{
+  "kernel": "Linux 7.2.8-cachyos1.fc44.x86_64",
+  "compiler": "c++ (GCC) 16.2.1 20260819 (Red Hat 16.2.1-2)",
+  "cmake": "cmake version 4.3.0",
+  "gpu": "AMD Radeon 8060S Graphics (RADV STRIX_HALO)",
+  "driver": "Mesa 26.2.3",
+  "headers_commit": "c46850864f4661461b0f6cb9922c058ffea4915e",
+  "native_executable_sha256": "34cb57be3674391ca8d00379927730190c2dfe24ac806d1c694ac83156f5fc90"
+}

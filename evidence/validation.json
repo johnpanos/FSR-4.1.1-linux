@@ -1,0 +1,63 @@
+{
+  "layer": "1.4.365",
+  "commit": "873a4efbb27d214fe98482c1335c70fb7c18c196",
+  "synchronization_validation": true,
+  "cases": [
+    {
+      "render": "1280x720",
+      "output": "1920x1080",
+      "model": "m0",
+      "frames": 8,
+      "validation_clean": true,
+      "bit_exact": true
+    },
+    {
+      "render": "640x360",
+      "output": "1920x1080",
+      "model": "m1",
+      "frames": 8,
+      "validation_clean": true,
+      "bit_exact": true
+    },
+    {
+      "render": "1067x600",
+      "output": "1600x900",
+      "model": "m0",
+      "frames": 8,
+      "validation_clean": true,
+      "bit_exact": true
+    },
+    {
+      "render": "1707x960",
+      "output": "2560x1440",
+      "model": "m0",
+      "frames": 8,
+      "validation_clean": true,
+      "bit_exact": true
+    },
+    {
+      "render": "2259x1271",
+      "output": "3840x2160",
+      "model": "m0",
+      "frames": 8,
+      "validation_clean": true,
+      "bit_exact": true
+    },
+    {
+      "render": "1280x720",
+      "output": "3840x2160",
+      "model": "m1",
+      "frames": 8,
+      "validation_clean": true,
+      "bit_exact": true
+    },
+    {
+      "render": "1707x720",
+      "output": "2560x1080",
+      "model": "m0",
+      "frames": 8,
+      "validation_clean": true,
+      "bit_exact": true
+    }
+  ]
+}

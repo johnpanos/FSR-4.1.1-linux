@@ -1,0 +1,10 @@
+/build/
+/deps/
+/work/
+/evidence/*.raw
+/evidence/*.log
+/evidence/*.png
+/evidence/*.txt
+__pycache__/
+/vkd3d-proton.cache*
+*.log

@@ -1,0 +1,2 @@
+# Preserve upstream patch context without treating its diff markers as indentation.
+*.patch -whitespace

@@ -1,0 +1,86 @@
+[
+  {
+    "render": "1280x720",
+    "output": "1920x1080",
+    "model": "m0",
+    "frames": 8,
+    "bit_exact": true,
+    "finite": true,
+    "size_ok": true,
+    "native_sha256": "a2cb9e4448aa9ad22e506ba15c50d0dd552aa4494fe91ee2b26de3ede5abed28",
+    "reference_sha256": "a2cb9e4448aa9ad22e506ba15c50d0dd552aa4494fe91ee2b26de3ede5abed28",
+    "half_values": 8294400
+  },
+  {
+    "render": "640x360",
+    "output": "1920x1080",
+    "model": "m1",
+    "frames": 8,
+    "bit_exact": true,
+    "finite": true,
+    "size_ok": true,
+    "native_sha256": "4acd032df45ff697648646e003a49dd5bb8a2e7ac191175d06e4593229c08715",
+    "reference_sha256": "4acd032df45ff697648646e003a49dd5bb8a2e7ac191175d06e4593229c08715",
+    "half_values": 8294400
+  },
+  {
+    "render": "1067x600",
+    "output": "1600x900",
+    "model": "m0",
+    "frames": 8,
+    "bit_exact": true,
+    "finite": true,
+    "size_ok": true,
+    "native_sha256": "efda3303e53e5092efd90387be7c1bd8a4899b69b12f822f151f0b8ae223ad6c",
+    "reference_sha256": "efda3303e53e5092efd90387be7c1bd8a4899b69b12f822f151f0b8ae223ad6c",
+    "half_values": 5760000
+  },
+  {
+    "render": "1707x960",
+    "output": "2560x1440",
+    "model": "m0",
+    "frames": 8,
+    "bit_exact": true,
+    "finite": true,
+    "size_ok": true,
+    "native_sha256": "e5d143f71afd011ef18c867317787e257e1015a45d68f2b1a325a5de9e70d905",
+    "reference_sha256": "e5d143f71afd011ef18c867317787e257e1015a45d68f2b1a325a5de9e70d905",
+    "half_values": 14745600
+  },
+  {
+    "render": "2259x1271",
+    "output": "3840x2160",
+    "model": "m0",
+    "frames": 8,
+    "bit_exact": true,
+    "finite": true,
+    "size_ok": true,
+    "native_sha256": "b5a12c665bb4e6ff2cd51b30040b065b46429e3a4e3a4bfb063fc323260362e1",
+    "reference_sha256": "b5a12c665bb4e6ff2cd51b30040b065b46429e3a4e3a4bfb063fc323260362e1",
+    "half_values": 33177600
+  },
+  {
+    "render": "1280x720",
+    "output": "3840x2160",
+    "model": "m1",
+    "frames": 8,
+    "bit_exact": true,
+    "finite": true,
+    "size_ok": true,
+    "native_sha256": "b90cf3f8d6ba67534ec5e0cd16edeca96b6fc76a22e882c4ab7415954c2e410b",
+    "reference_sha256": "b90cf3f8d6ba67534ec5e0cd16edeca96b6fc76a22e882c4ab7415954c2e410b",
+    "half_values": 33177600
+  },
+  {
+    "render": "1707x720",
+    "output": "2560x1080",
+    "model": "m0",
+    "frames": 8,
+    "bit_exact": true,
+    "finite": true,
+    "size_ok": true,
+    "native_sha256": "a952af3c2905b4f5d2012b541929706678264fc7f484330764deea45409af05d",
+    "reference_sha256": "a952af3c2905b4f5d2012b541929706678264fc7f484330764deea45409af05d",
+    "half_values": 11059200
+  }
+]

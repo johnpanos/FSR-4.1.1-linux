@@ -1,0 +1,6 @@
+{
+  "missing_assets_rejected": true,
+  "zero_input_size_rejected": true,
+  "cpu_renderer_rejected": true,
+  "clean_checkout_parity": true
+}

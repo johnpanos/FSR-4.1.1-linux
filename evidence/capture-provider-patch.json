@@ -1,0 +1,22 @@
+{
+  "original_sha256": "d0dcccc74a43c44ba435b7a369b456e0970d8a4464e4bd683119b374f2c9fb46",
+  "patched_sha256": "d71ea1390c1056c855e732ab062a399799a18596c9d0e7b9a86d14133f884d9d",
+  "patches": [
+    {
+      "offset": 33161,
+      "before": "817c",
+      "after": "c744"
+    },
+    {
+      "offset": 33169,
+      "before": "440fb6c075238b5424308d4aff83f90e",
+      "after": "c74424300100000041b801000000eb15"
+    },
+    {
+      "offset": 18306,
+      "before": "41f686d80b000001",
+      "after": "41f686d80b000000"
+    }
+  ],
+  "purpose": "INT8 eligibility and buffer-UAV synchronization only; no shader or model edits"
+}
