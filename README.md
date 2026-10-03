@@ -84,6 +84,12 @@ buffer-UAV synchronization. Its shader arithmetic and model weights stay
 original. Pins, asset hashes and patch provenance are recorded in
 [dependencies.json](dependencies.json) and [NOTICE.md](NOTICE.md).
 
+## AI disclosure
+
+AI tools were used to research, adapt and test this standalone port. Without AI,
+putting this project together would likely have taken years. It fulfills a very
+niche use case: running FSR 4.1.1 INT8 directly through Vulkan on Linux.
+
 ## License and status
 
 Unofficial, experimental, not endorsed by AMD. This is the INT8 upscaler;
