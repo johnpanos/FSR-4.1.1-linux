@@ -202,6 +202,7 @@ struct Upscaler::Impl {
     VkPhysicalDevice physical;
     VkDevice device;
     std::string dir;
+    bool mixed_float_dot = true;
     std::string error;
     VkPhysicalDeviceMemoryProperties memory{};
     VkDeviceSize ubo_align = 256;
@@ -246,8 +247,8 @@ struct Upscaler::Impl {
     std::array<double, kPassCount> profile_ms{};
     uint64_t profile_frames = 0;
 
-    Impl(VkPhysicalDevice p, VkDevice d, std::string dir_)
-        : physical{p}, device{d}, dir{std::move(dir_)} {
+    Impl(VkPhysicalDevice p, VkDevice d, std::string dir_, bool mixed)
+        : physical{p}, device{d}, dir{std::move(dir_)}, mixed_float_dot{mixed} {
         vkGetPhysicalDeviceMemoryProperties(physical, &memory);
         VkPhysicalDeviceProperties props;
         vkGetPhysicalDeviceProperties(physical, &props);
@@ -419,7 +420,9 @@ struct Upscaler::Impl {
 
     bool LoadPass(uint32_t index) {
         std::vector<uint8_t> bytes;
-        const std::string path = dir + "/" + set + "/" + kPasses[index] + ".spv";
+        const std::string name = kPasses[index];
+        const std::string file = name == "prepass" && !mixed_float_dot ? "prepass_portable" : name;
+        const std::string path = dir + "/" + set + "/" + file + ".spv";
         if (!ReadFile(path, bytes) || bytes.size() % 4) {
             error = "missing " + path + " (tools/fsr4cap: capture and extract the FSR 4.1.1 assets)";
             return false;
@@ -765,8 +768,9 @@ struct Upscaler::Impl {
     }
 };
 
-Upscaler::Upscaler(VkPhysicalDevice physical, VkDevice device, std::string dir)
-    : impl{std::make_unique<Impl>(physical, device, std::move(dir))} {}
+Upscaler::Upscaler(VkPhysicalDevice physical, VkDevice device, std::string dir,
+                   bool mixed_float_dot)
+    : impl{std::make_unique<Impl>(physical, device, std::move(dir), mixed_float_dot)} {}
 
 Upscaler::~Upscaler() = default;
 

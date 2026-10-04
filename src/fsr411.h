@@ -42,8 +42,11 @@ struct Frame {
 
 class Upscaler {
 public:
-    /// `dir`: the asset sets (t1080_m0 ... t2160_m1).
-    Upscaler(VkPhysicalDevice physical, VkDevice device, std::string dir);
+    /// `dir`: the asset sets (t1080_m0 ... t2160_m1). `mixed_float_dot`: the device enabled
+    /// VK_VALVE_shader_mixed_float_dot_product (shaderMixedFloatDotProductFloat16AccFloat32);
+    /// without it the prepass loads prepass_portable.spv (tools/portable_dot.py), core SPIR-V.
+    Upscaler(VkPhysicalDevice physical, VkDevice device, std::string dir,
+             bool mixed_float_dot = true);
     ~Upscaler();
 
     /// Records one upscale; false with Error() set when it cannot (assets, device, sizes).

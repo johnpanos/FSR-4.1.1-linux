@@ -3,7 +3,8 @@
 # (capture_<render>_<output> directories written by capture_all.sh).
 #
 #   extract.py <dxil-spirv> <capture root> <output dir>
-# (spirv-dis, spirv-as from SPIRV-Tools on PATH: the postpass is rewritten by postpass_lds.py.)
+# (spirv-dis, spirv-as from SPIRV-Tools on PATH: the postpass is rewritten by postpass_lds.py, and
+# portable_dot.py writes prepass_portable.spv beside the prepass.)
 #
 # Per (tier, model) set: the shaders of one frame translated to SPIR-V (dxil-spirv with
 # --class-bindings: binding = register + 32 * class, SRV/UAV/CBV/sampler), named after the pass,
@@ -123,6 +124,10 @@ for key, entry in sorted(sets.items()):
                                  input=asm, check=True, capture_output=True, text=True).stdout
             subprocess.run(['spirv-as', '--target-env', 'spv1.3', '-', '-o', spv], input=lds, check=True,
                            text=True)
+        if name == 'prepass':
+            # Core SPIR-V for drivers without the VALVE mixed float dot extension: portable_dot.py.
+            subprocess.run([sys.executable, os.path.join(os.path.dirname(__file__), 'portable_dot.py'), spv,
+                            os.path.join(d, 'prepass_portable.spv')], check=True)
     open(os.path.join(d, 'initializer.bin'), 'wb').write(entry['init'])
     print(f'{key}: {len(entry["dxil"])} shaders, initializer {hashlib.sha256(entry["init"]).hexdigest()[:12]}, '
           f'from {len(entry["caps"])} captures')

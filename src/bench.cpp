@@ -38,6 +38,7 @@ struct Gpu {
     VkQueue queue{};
     uint32_t family = 0;
     VkPhysicalDeviceMemoryProperties memory{};
+    bool mixed_float_dot = false; ///< VK_VALVE_shader_mixed_float_dot_product enabled
 };
 
 uint32_t MemoryType(const Gpu& gpu, uint32_t bits, VkMemoryPropertyFlags flags) {
@@ -112,8 +113,14 @@ Gpu CreateGpu() {
     f13.robustImageAccess = VK_FALSE;
     std::vector<const char*> extensions{VK_KHR_COMPUTE_SHADER_DERIVATIVES_EXTENSION_NAME};
     extensions.push_back(VK_KHR_PUSH_DESCRIPTOR_EXTENSION_NAME);
-    if (mixed_dot.shaderMixedFloatDotProductFloat16AccFloat32) {
+    const char* portable_env = std::getenv("BENCH_PORTABLE_DOT");
+    gpu.mixed_float_dot = mixed_dot.shaderMixedFloatDotProductFloat16AccFloat32 &&
+                      !(portable_env && portable_env[0] == '1');
+    if (gpu.mixed_float_dot) {
         extensions.push_back(VK_VALVE_SHADER_MIXED_FLOAT_DOT_PRODUCT_EXTENSION_NAME);
+    } else {
+        derivatives.pNext = nullptr; // the VALVE structure only with its extension
+        std::printf("FSR 4.1.1 prepass: portable dot (no VK_VALVE_shader_mixed_float_dot_product)\n");
     }
     uint32_t extension_count = 0;
     CHECK(vkEnumerateDeviceExtensionProperties(gpu.physical, nullptr, &extension_count, nullptr));
@@ -127,7 +134,7 @@ Gpu CreateGpu() {
             std::exit(1);
         }
     }
-    if (!mixed_dot.shaderMixedFloatDotProductFloat16AccFloat32 || !derivatives.computeDerivativeGroupLinear ||
+    if (!derivatives.computeDerivativeGroupLinear ||
         !f12.shaderFloat16 || !f12.shaderInt8 || !features.features.shaderInt16 ||
         !f13.shaderIntegerDotProduct || !features.features.shaderStorageImageWriteWithoutFormat) {
         std::fprintf(stderr, "required FSR 4.1.1 shader features missing\n");
@@ -383,7 +390,8 @@ int main(int argc, char** argv) {
     if (fsr411) {
         const char* dir411 = std::getenv("BB_FSR411_DIR");
         upscaler411 = std::make_unique<Fsr411::Upscaler>(gpu.physical, gpu.device,
-                                                         dir411 && dir411[0] ? dir411 : "assets");
+                                                         dir411 && dir411[0] ? dir411 : "assets",
+                                                         gpu.mixed_float_dot);
         VkQueryPoolCreateInfo qci{VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO};
         qci.queryType = VK_QUERY_TYPE_TIMESTAMP;
         qci.queryCount = 2;

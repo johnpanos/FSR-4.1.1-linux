@@ -42,11 +42,20 @@ formatless storage-image writes, and these extensions:
 
 - `VK_KHR_push_descriptor`
 - `VK_KHR_compute_shader_derivatives` (linear derivative groups)
-- `VK_VALVE_shader_mixed_float_dot_product` (FP16 inputs, FP32 accumulation)
+- `VK_VALVE_shader_mixed_float_dot_product` (FP16 inputs, FP32 accumulation),
+  optional
 
-The last extension is recent. The installed driver and validation layer must
-both know it. Other GPUs and drivers are untested; there is no automatic fallback.
-Output is limited to 3840x2160.
+The last extension is recent, and drivers such as NVIDIA's do not have it. Without
+it the prepass loads `prepass_portable.spv`, which `tools/portable_dot.py` rewrites
+from the prepass: each `OpFDot2MixAcc32VALVE` becomes exact FP16 to FP32
+conversions and two FMAs. The extension leaves its precision implementation
+defined, and AMD hardware rounds differently, so the portable prepass is not bit
+exact against the AMD reference. On RADV with noise input (values up to 2), the
+output differs by a mean of 0.007 per channel after one frame and 0.02-0.03 after
+eight; different FMA orders agree with each other far more closely than with the
+hardware. Image quality in games is not yet judged.
+`BENCH_PORTABLE_DOT=1` selects it where the extension exists. Other GPUs and
+drivers are untested. Output is limited to 3840x2160.
 
 ## Verification
 

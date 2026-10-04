@@ -55,6 +55,7 @@
     "assets/t1080_m0/postpass.spv": "71f3e8dfeb89252ebf77d4851d7dc42add26e628e6ddae3020fb0dc044669ca8",
     "assets/t1080_m0/postpass_orig.spv": "d6147dd31668682ce80b66283f8ab51a91a2ff292dbb07d703c74603552b4b5c",
     "assets/t1080_m0/prepass.spv": "0f186688e1f117a44acd9f46338e34610ef830cd48be172586b18f1865500600",
+    "assets/t1080_m0/prepass_portable.spv": "b7c12e88a15a43a912ad60fd45df8bdd1d5fbf67b6ea762364e6ec1b9c42d611",
     "assets/t1080_m0/rcas.spv": "8a357684cad8d8ce02b3e9d501fb37d3c3f9cb5b60ade0ca0cddeac4c1605a21",
     "assets/t1080_m0/spd.spv": "e5e437679f4cb17f72a84faeefb92d2f3649c138c4504f4e7df0bb791edf0aac",
     "assets/t1080_m1/initializer.bin": "3c42fc6eabfa9b5b1e489df0e9b2f58e3f9fa22048c584f6839bb27d32a0640e",
@@ -86,6 +87,7 @@
     "assets/t1080_m1/postpass.spv": "1dcd6bb2b4abb0339fd9c16035fadee636e817b4fb6afba56ce9b16a5386b6b2",
     "assets/t1080_m1/postpass_orig.spv": "7afcec58a572616ce24dc611e24254ecb1455f7551943eb6bd9a96767314f9d9",
     "assets/t1080_m1/prepass.spv": "0f186688e1f117a44acd9f46338e34610ef830cd48be172586b18f1865500600",
+    "assets/t1080_m1/prepass_portable.spv": "b7c12e88a15a43a912ad60fd45df8bdd1d5fbf67b6ea762364e6ec1b9c42d611",
     "assets/t1080_m1/rcas.spv": "8a357684cad8d8ce02b3e9d501fb37d3c3f9cb5b60ade0ca0cddeac4c1605a21",
     "assets/t1080_m1/spd.spv": "e5e437679f4cb17f72a84faeefb92d2f3649c138c4504f4e7df0bb791edf0aac",
     "assets/t2160_m0/initializer.bin": "a54e552ff69a3f7199861417f7ae461d1f67f636ab532c6ec9d8ea5d2963735a",
@@ -117,6 +119,7 @@
     "assets/t2160_m0/postpass.spv": "360d129d5eb33eb5abc8562f8cd8490f728e657439af2a93fbb6f78a0ff43400",
     "assets/t2160_m0/postpass_orig.spv": "8e403390d8d0ae19d99b1ae749ac45bd794265edb3ceb3b4b8bf950e886d631d",
     "assets/t2160_m0/prepass.spv": "8a68cb1a752c9a3efbce6544b26478da2107c9294b3d9353db174b8201c08161",
+    "assets/t2160_m0/prepass_portable.spv": "d4de33b008f833f2b1684f1783599dbd6526efe29688cab1cc7cc2c5329f5678",
     "assets/t2160_m0/rcas.spv": "8a357684cad8d8ce02b3e9d501fb37d3c3f9cb5b60ade0ca0cddeac4c1605a21",
     "assets/t2160_m0/spd.spv": "e5e437679f4cb17f72a84faeefb92d2f3649c138c4504f4e7df0bb791edf0aac",
     "assets/t2160_m1/initializer.bin": "3c42fc6eabfa9b5b1e489df0e9b2f58e3f9fa22048c584f6839bb27d32a0640e",
@@ -148,9 +151,10 @@
     "assets/t2160_m1/postpass.spv": "50be8881db7e262b9f170a60b60101d65d4ca627e145b044aae398240778d875",
     "assets/t2160_m1/postpass_orig.spv": "0c00e7008311810ab2aaa3eda64a73bf59cb0c26b74db5f746b73dd48d781857",
     "assets/t2160_m1/prepass.spv": "8a68cb1a752c9a3efbce6544b26478da2107c9294b3d9353db174b8201c08161",
+    "assets/t2160_m1/prepass_portable.spv": "d4de33b008f833f2b1684f1783599dbd6526efe29688cab1cc7cc2c5329f5678",
     "assets/t2160_m1/rcas.spv": "8a357684cad8d8ce02b3e9d501fb37d3c3f9cb5b60ade0ca0cddeac4c1605a21",
     "assets/t2160_m1/spd.spv": "e5e437679f4cb17f72a84faeefb92d2f3649c138c4504f4e7df0bb791edf0aac"
   },
-  "asset_origin": "AMD FSR SDK 2.3.0 upscaler 4.1.1 INT8, shader instructions unmodified except bbport postpass LDS stores",
+  "asset_origin": "AMD FSR SDK 2.3.0 upscaler 4.1.1 INT8, shader instructions unmodified except bbport postpass LDS stores; prepass_portable rewrites the VALVE mixed float dot into core SPIR-V (tools/portable_dot.py)",
   "reference_runtime": "GE-Proton11-5-x86_64: asset preparation and oracle only"
 }
